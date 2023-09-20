@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "dev": "dotenv -c development -- nodemon --watch 'src/**/*.ts' --exec 'ts-node' --files src/index.ts",
+    "dev": "dotenv -c development -- nodemon --watch 'src/**/*.ts' --exec 'ts-node' -r tsconfig-paths/register --files src/index.ts",
     "build": "tsc -p tsconfig.json",
     "start": "tsx src/index.ts",
     "lint": "biome check src/",
@@ -25,6 +25,7 @@
     "lint-staged": "^14.0.1",
     "nodemon": "^3.0.1",
     "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0",
     "tsx": "^3.12.2"
   },
   "volta": {
