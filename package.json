@@ -1,5 +1,7 @@
 {
   "scripts": {
+    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
+    "build": "tsc -p tsconfig.json",
     "start": "tsx src/index.ts"
   },
   "dependencies": {
@@ -7,6 +9,8 @@
     "hono": "^3.6.0"
   },
   "devDependencies": {
+    "nodemon": "^3.0.1",
+    "ts-node": "^10.9.1",
     "tsx": "^3.12.2"
   },
   "volta": {
