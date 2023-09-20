@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "start": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.1.0",
+    "hono": "^3.6.0"
+  },
+  "devDependencies": {
+    "tsx": "^3.12.2"
+  },
+  "volta": {
+    "node": "18.18.0",
+    "npm": "10.1.0"
+  }
+}
