@@ -1,12 +1,21 @@
 import { serve } from "@hono/node-server";
+import { OpenAPIHono } from "@hono/zod-openapi";
 import { env } from "env";
-import { Hono } from "hono";
 import { logger } from "hono/logger";
+import handler from "routes";
 
-const app = new Hono({ strict: false });
+const app = new OpenAPIHono({ strict: false });
 
 app.use("*", logger());
-app.get("/", (c) => c.text("Hello Hono!"));
+app.route("/api", handler);
+
+app.doc("/docs", {
+  openapi: "3.0.0",
+  info: {
+    version: "1.0.0",
+    title: "Access Control Backend API",
+  },
+});
 
 serve({
   fetch: app.fetch,
