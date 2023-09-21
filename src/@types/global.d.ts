@@ -1,5 +1,6 @@
-declare namespace NodeJS {
-  interface ProcessEnv {
-    NODE_ENV: "development" | "production" | "test";
-  }
+import type { Prisma } from "@prisma/client";
+
+declare global {
+  // biome-ignore lint: lint/style/noVar
+  var prisma: Prisma;
 }
