@@ -225,6 +225,10 @@ interface History {
 
   - リクエストボディが不正
 
+- 403 Forbidden
+
+  - 既にユーザーが作成済み（Cookie に`uid`が設定されている）
+
 - 500 Internal Server Error
 
   - サーバー内部エラー
@@ -268,6 +272,10 @@ interface History {
 
   - 更新されたユーザー情報を返す
 
+- 400 Bad Request
+
+  - リクエストボディが不正
+
 - 401 Unauthorized
 
   - ユーザーの識別情報が不正
@@ -282,7 +290,7 @@ interface History {
 
 ##### レスポンス
 
-- 204 No Content
+- 200 Ok
 
   - ユーザーが削除された
 
