@@ -8,7 +8,8 @@
     "prepare": "husky install",
     "migration:dev": "dotenv -c development -- prisma migrate dev --name \"$(date +%s)\"",
     "prisma:generate": "prisma generate",
-    "prisma:studio": "dotenv -c development -- prisma studio"
+    "prisma:studio": "dotenv -c development -- prisma studio",
+    "prisma:seed": "dotenv -c development -- prisma db seed"
   },
   "lint-staged": {
     "src/**/*.ts": [
@@ -31,6 +32,9 @@
     "lint-staged": "^14.0.1",
     "prisma": "^5.3.1",
     "tsx": "^3.12.2"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
   },
   "volta": {
     "node": "18.18.0",
