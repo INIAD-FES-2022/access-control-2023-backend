@@ -147,6 +147,8 @@ interface History {
 
 ### Note
 
+**下記の問題はnginxで解決可能**
+
 異なるポートではオリジンも異なるため、fetchでは以下のように`mode`や`credentials`の設定が必要な場合がある。
 
 ```javascript
