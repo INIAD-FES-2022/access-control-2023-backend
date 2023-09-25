@@ -12,3 +12,7 @@ export const HistoryResponseSchema = z
     program: ProgramResponseSchema,
   })
   .openapi("HistoryResponse");
+
+export const HistoriesResponseSchema = z
+  .array(HistoryResponseSchema)
+  .openapi("HistoriesResponse");
