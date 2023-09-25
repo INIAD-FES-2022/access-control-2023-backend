@@ -1,5 +1,13 @@
 # Access Control Backend
 
+## 起動方法
+
+```bash
+docker compose up -d
+npm i
+npm run dev
+```
+
 ## 共通仕様
 
 末尾のスラッシュの有無は区別しない。
