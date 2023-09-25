@@ -96,8 +96,9 @@ handler.openapi(routes.delete, async (c) => {
         id: userId,
       },
     })
-    .then(() => {
+    .then((result) => {
       deleteUidCookie(c);
+      return result;
     })
     .catch((e: unknown) => {
       if (e instanceof Prisma.PrismaClientKnownRequestError) {
