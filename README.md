@@ -172,7 +172,7 @@ fetch("http://localhost:8080/api/user", {
 
 OpenAPI documentations
 
-[openapi2aspida]("https://github.com/aspida/openapi2aspida")などを用いることで、TypeScriptでのAPIクライアントを生成することができる。
+[openapi2aspida](https://github.com/aspida/openapi2aspida)などを用いることで、TypeScriptでのAPIクライアントを生成することができる。
 
 ### `/api/user`
 
