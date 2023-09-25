@@ -155,9 +155,9 @@ interface History {
 
 ### Note
 
-**下記の問題はnginxで解決可能**
+**下記の問題は nginx で解決可能**
 
-異なるポートではオリジンも異なるため、fetchでは以下のように`mode`や`credentials`の設定が必要な場合がある。
+異なるポートではオリジンも異なるため、fetch では以下のように`mode`や`credentials`の設定が必要な場合がある。
 
 ```javascript
 fetch("http://localhost:8080/api/user", {
@@ -172,7 +172,7 @@ fetch("http://localhost:8080/api/user", {
 
 OpenAPI documentations
 
-[openapi2aspida](https://github.com/aspida/openapi2aspida)などを用いることで、TypeScriptでのAPIクライアントを生成することができる。
+[openapi2aspida](https://github.com/aspida/openapi2aspida)などを用いることで、TypeScript での API クライアントを生成することができる。
 
 ### `/api/user`
 
