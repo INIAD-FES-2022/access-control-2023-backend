@@ -1,6 +1,6 @@
 import { OpenAPIHono } from "@hono/zod-openapi";
 import { Prisma } from "@prisma/client";
-import { deleteUidCookie, getUidCookie, setUidCookie } from "helper/uid-cookie";
+import { deleteUidCookie, getUid, setUidCookie } from "helper/uid";
 import prisma from "lib/prisma";
 import { UserResponseSchema } from "schema/user";
 import { routes } from "./routes";
@@ -8,7 +8,7 @@ import { routes } from "./routes";
 const handler = new OpenAPIHono();
 
 handler.openapi(routes.get, async (c) => {
-  const userId = await getUidCookie(c);
+  const userId = getUid(c);
 
   if (userId === null) {
     return c.jsonT({}, 401);
@@ -30,7 +30,7 @@ handler.openapi(routes.get, async (c) => {
 });
 
 handler.openapi(routes.post, async (c) => {
-  const userId = await getUidCookie(c);
+  const userId = getUid(c);
 
   if (userId !== null) {
     return c.jsonT({}, 403);
@@ -42,7 +42,7 @@ handler.openapi(routes.post, async (c) => {
     data: req,
   });
 
-  await setUidCookie(c, user.id);
+  setUidCookie(c, user.id);
 
   const guard = UserResponseSchema.parse(user);
 
@@ -50,7 +50,7 @@ handler.openapi(routes.post, async (c) => {
 });
 
 handler.openapi(routes.put, async (c) => {
-  const userId = await getUidCookie(c);
+  const userId = getUid(c);
 
   if (userId === null) {
     return c.jsonT({}, 401);
@@ -84,7 +84,7 @@ handler.openapi(routes.put, async (c) => {
 });
 
 handler.openapi(routes.delete, async (c) => {
-  const userId = await getUidCookie(c);
+  const userId = getUid(c);
 
   if (userId === null) {
     return c.jsonT({}, 401);

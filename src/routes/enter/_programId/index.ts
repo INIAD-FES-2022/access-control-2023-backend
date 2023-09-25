@@ -1,5 +1,5 @@
 import { OpenAPIHono } from "@hono/zod-openapi";
-import { getUidCookie } from "helper/uid-cookie";
+import { getUid } from "helper/uid";
 import prisma from "lib/prisma";
 import { HistoryResponseSchema } from "schema/history";
 import { routes } from "./routes";
@@ -19,7 +19,7 @@ handler.openapi(routes.post, async (c) => {
     return c.jsonT({}, 404);
   }
 
-  const userId = await getUidCookie(c);
+  const userId = getUid(c);
 
   if (userId === null) {
     return c.jsonT({}, 401);
