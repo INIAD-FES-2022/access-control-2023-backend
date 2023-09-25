@@ -31,7 +31,8 @@
     "husky": "^8.0.0",
     "lint-staged": "^14.0.1",
     "prisma": "^5.3.1",
-    "tsx": "^3.12.2"
+    "tsx": "^3.12.2",
+    "typescript": "^5.2.2"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
