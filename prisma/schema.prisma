@@ -24,8 +24,8 @@ model User {
 model History {
   id        String   @id @default(uuid())
   entryTime DateTime @default(now()) @map("entry_time")
-  user      User     @relation(fields: [userId], references: [id])
-  program   Program  @relation(fields: [programId], references: [id])
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  program   Program  @relation(fields: [programId], references: [id], onDelete: Cascade)
   userId    String   @map("user_id")
   programId String   @map("program_id")
 }
