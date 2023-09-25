@@ -147,6 +147,12 @@ interface History {
 
 ## エンドポイント
 
+### `/docs`
+
+OpenAPI documentations
+
+[openapi2aspida]("https://github.com/aspida/openapi2aspida")などを用いることで、TypeScriptでのAPIクライアントを生成することができる。
+
 ### `/api/user`
 
 #### GET
