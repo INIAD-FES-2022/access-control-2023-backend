@@ -11,4 +11,4 @@ export const HistoryResponseSchema = z
     }),
     program: ProgramResponseSchema,
   })
-  .openapi("HistoryResponseSchema");
+  .openapi("HistoryResponse");

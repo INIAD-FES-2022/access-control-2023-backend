@@ -9,4 +9,4 @@ export const ProgramResponseSchema = z
       example: "企画名",
     }),
   })
-  .openapi("ProgramResponseSchema");
+  .openapi("ProgramResponse");

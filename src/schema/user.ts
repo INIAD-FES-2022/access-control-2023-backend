@@ -61,8 +61,8 @@ export const UserResponseSchema = z
           "0: 一人, 1: 家族（子どもあり）, 2: 家族（子どもなし）, 3: 学生グループ, 4: 恋人, 5: 友人, 6: その他",
       }),
   })
-  .openapi("UserResponseSchema");
+  .openapi("UserResponse");
 
 export const UserRequestSchema = UserResponseSchema.omit({
   id: true,
-}).openapi("UserRequestSchema");
+}).openapi("UserRequest");
