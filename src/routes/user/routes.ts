@@ -85,8 +85,13 @@ const deleteRoute = createRoute({
   path: "/",
   description: "ユーザーを削除する",
   responses: {
-    204: {
+    200: {
       description: "ユーザーが削除された",
+      content: {
+        "application/json": {
+          schema: UserResponseSchema,
+        },
+      },
     },
     401: {
       description: "ユーザーの識別情報が不正",

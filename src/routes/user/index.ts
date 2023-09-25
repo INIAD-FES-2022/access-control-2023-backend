@@ -90,7 +90,7 @@ handler.openapi(routes.delete, async (c) => {
     return c.jsonT({}, 401);
   }
 
-  const result = await prisma.user
+  const user = await prisma.user
     .delete({
       where: {
         id: userId,
@@ -109,11 +109,13 @@ handler.openapi(routes.delete, async (c) => {
       throw e;
     });
 
-  if (!result) {
+  if (!user) {
     return c.jsonT({}, 401);
   }
 
-  return c.jsonT({});
+  const guard = UserResponseSchema.parse(user);
+
+  return c.jsonT(guard);
 });
 
 export default handler;

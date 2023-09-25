@@ -290,6 +290,20 @@ interface History {
 
 ##### レスポンス
 
+`User`
+
+```javascript
+{
+  id: "ユーザーID",
+  age: "年齢",
+  gender: "性別",
+  occupation: "職業",
+  home: "出身",
+  people: "人数",
+  composition: "構成"
+}
+```
+
 - 200 Ok
 
   - ユーザーが削除された
@@ -383,7 +397,20 @@ interface History {
 
 ##### レスポンス
 
-- 204 No Content
+`History`
+
+```javascript
+{
+  id: "履歴ID",
+  entryTime: "参加時間",
+  program: {
+    id: "企画ID",
+    name: "企画名",
+  }
+}
+```
+
+- 200 Ok
 
   - 参加履歴が削除された
 
