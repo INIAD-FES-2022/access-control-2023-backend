@@ -8,6 +8,15 @@ npm i
 npm run dev
 ```
 
+### note
+
+docker(nginx)を起動すると、`http://localhost/`から以下のようにアクセスできる。
+
+| パス    | プロキシ先                   |
+| ------- | ---------------------------- |
+| `/`     | `http://localhost:3000`      |
+| `/api/` | `http://localhost:8080/api/` |
+
 ## 共通仕様
 
 末尾のスラッシュの有無は区別しない。
