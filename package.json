@@ -6,7 +6,8 @@
     "lint": "biome check src/",
     "format": "biome check --apply src/",
     "prepare": "husky install",
-    "migration:dev": "dotenv -c development -- prisma migrate dev --name \"$(date +%s)\"",
+    "prisma": "dotenv -c development -- prisma",
+    "prisma:migrate": "dotenv -c development -- prisma migrate dev --name \"$(date +%s)\"",
     "prisma:generate": "prisma generate",
     "prisma:studio": "dotenv -c development -- prisma studio",
     "prisma:seed": "dotenv -c development -- prisma db seed"
