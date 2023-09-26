@@ -6,5 +6,5 @@ export const env = parseEnv(process.env, {
   NODE_ENV: z
     .enum(["development", "production", "test"])
     .default("development"),
-  CORS_ORIGIN: z.string(),
+  CORS_ORIGIN: z.string().default(""),
 });
