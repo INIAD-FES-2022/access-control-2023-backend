@@ -3,6 +3,7 @@
     "dev": "dotenv -c development -- tsx watch src/index.ts",
     "build": "esbuild --platform=node --outdir=dist --bundle --minify ./src/index.ts",
     "start": "tsx src/index.ts",
+    "test": "dotenv -c test -- vitest",
     "typecheck": "tsc --noEmit",
     "lint": "biome check src/",
     "format": "biome check --apply src/",
@@ -35,7 +36,11 @@
     "lint-staged": "^14.0.1",
     "prisma": "^5.3.1",
     "tsx": "^3.12.2",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "vite": "^4.4.9",
+    "vite-tsconfig-paths": "^4.2.1",
+    "vitest": "^0.34.5",
+    "vitest-mock-extended": "^1.2.1"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"

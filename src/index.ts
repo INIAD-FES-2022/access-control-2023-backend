@@ -7,15 +7,19 @@ import handler from "routes";
 
 const app = new OpenAPIHono({ strict: false });
 
+if (env.NODE_ENV === "development") {
+  app.use("*", logger());
+}
+
 app.use(
   "*",
-  logger(),
   cors({
     origin: env.CORS_ORIGIN,
     credentials: true,
   }),
 );
-app.route("/api", handler);
+
+export const route = app.route("/api", handler);
 
 app.doc("/docs", {
   openapi: "3.0.0",
@@ -25,7 +29,9 @@ app.doc("/docs", {
   },
 });
 
-serve({
-  fetch: app.fetch,
-  port: env.PORT,
-});
+if (process.env.NODE_ENV !== "test") {
+  serve({
+    fetch: app.fetch,
+    port: env.PORT,
+  });
+}
