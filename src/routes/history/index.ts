@@ -1,8 +1,8 @@
 import { OpenAPIHono } from "@hono/zod-openapi";
 import { convertHistoryResponse } from "helper/history";
 import { getUid } from "helper/uid";
-import { historyRepository } from "repositories/history.repository";
-import { userRepository } from "repositories/user.repository";
+import historyRepository from "repositories/history.repository";
+import userRepository from "repositories/user.repository";
 import { HistoriesResponseSchema } from "schema/history";
 import historyIdHandler from "./_historyId";
 import { routes } from "./routes";

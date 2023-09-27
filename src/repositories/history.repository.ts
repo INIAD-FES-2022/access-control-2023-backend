@@ -1,18 +1,24 @@
-import type { History, Program, User } from "@prisma/client";
+import type { History, PrismaClient, Program, User } from "@prisma/client";
 import prisma from "lib/prisma";
 
-export const historyRepository = {
+export class HistoryRepository {
+  private prisma: PrismaClient;
+  constructor(prisma: PrismaClient) {
+    this.prisma = prisma;
+  }
+
   async findUnique(id: string): Promise<History | null> {
-    return await prisma.history.findUnique({
+    return await this.prisma.history.findUnique({
       where: {
         id,
       },
     });
-  },
+  }
+
   async findMany(
     userId: string,
   ): Promise<({ program: Program; user: User } & History)[]> {
-    return await prisma.history.findMany({
+    return await this.prisma.history.findMany({
       where: {
         userId,
       },
@@ -21,16 +27,18 @@ export const historyRepository = {
         user: true,
       },
     });
-  },
+  }
+
   async create(data: Omit<History, "id" | "entryTime">): Promise<History> {
-    return await prisma.history.create({
+    return await this.prisma.history.create({
       data,
     });
-  },
+  }
+
   async delete(
     id: string,
   ): Promise<{ program: Program; user: User } & History> {
-    return await prisma.history.delete({
+    return await this.prisma.history.delete({
       where: {
         id,
       },
@@ -39,5 +47,9 @@ export const historyRepository = {
         user: true,
       },
     });
-  },
-};
+  }
+}
+
+const historyRepository = new HistoryRepository(prisma);
+
+export default historyRepository;

@@ -1,7 +1,7 @@
 import { OpenAPIHono } from "@hono/zod-openapi";
 import { Prisma } from "@prisma/client";
 import { deleteUidCookie, getUid, setUidCookie } from "helper/uid";
-import { userRepository } from "repositories/user.repository";
+import userRepository from "repositories/user.repository";
 import { UserResponseSchema } from "schema/user";
 import { routes } from "./routes";
 

@@ -1,12 +1,21 @@
-import type { Program } from "@prisma/client";
+import type { PrismaClient, Program } from "@prisma/client";
 import prisma from "lib/prisma";
 
-export const programRepository = {
+export class ProgramRepository {
+  private prisma: PrismaClient;
+  constructor(prisma: PrismaClient) {
+    this.prisma = prisma;
+  }
+
   async findUnique(id: string): Promise<Program | null> {
-    return await prisma.program.findUnique({
+    return await this.prisma.program.findUnique({
       where: {
         id,
       },
     });
-  },
-};
+  }
+}
+
+const programRepository = new ProgramRepository(prisma);
+
+export default programRepository;
