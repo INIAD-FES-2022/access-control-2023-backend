@@ -15,7 +15,7 @@ export class HistoryRepository {
     });
   }
 
-  async findMany(
+  async findManyByUser(
     userId: string,
   ): Promise<({ program: Program; user: User } & History)[]> {
     return await this.prisma.history.findMany({

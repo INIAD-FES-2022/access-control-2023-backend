@@ -22,7 +22,7 @@ handler.openapi(routes.get, async (c) => {
     return c.jsonT({}, 401);
   }
 
-  const histories = await historyRepository.findMany(user.id);
+  const histories = await historyRepository.findManyByUser(user.id);
 
   const guard = HistoriesResponseSchema.parse(
     histories.map(convertHistoryResponse),
