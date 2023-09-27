@@ -2,7 +2,7 @@ import { randomUUID } from "crypto";
 import { UserRepository } from "repositories/user.repository";
 import { beforeEach } from "vitest";
 import { mockDeep, mockReset } from "vitest-mock-extended";
-import { userStore } from "./mock-store";
+import { historyStore, userStore } from "./mock-store";
 
 beforeEach(() => {
   mockReset(userRepository);
@@ -39,6 +39,11 @@ beforeEach(() => {
       throw new Error("User not found");
     }
     userStore.delete(id);
+    Array.from(historyStore.values()).forEach((history) => {
+      if (history.userId === id) {
+        historyStore.delete(history.id);
+      }
+    });
     return user;
   });
 });
