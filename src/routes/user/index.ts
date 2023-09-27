@@ -1,5 +1,4 @@
 import { OpenAPIHono } from "@hono/zod-openapi";
-import { Prisma } from "@prisma/client";
 import { deleteUidCookie, getUid, setUidCookie } from "helper/uid";
 import userRepository from "repositories/user.repository";
 import { UserResponseSchema } from "schema/user";
@@ -52,20 +51,15 @@ handler.openapi(routes.put, async (c) => {
 
   const req = c.req.valid("json");
 
-  const user = await userRepository.update(userId, req).catch((e: unknown) => {
-    if (e instanceof Prisma.PrismaClientKnownRequestError) {
-      if (e.code === "P2025") {
-        return null;
-      }
-    }
-    throw e;
-  });
+  const user = await userRepository.findUnique(userId);
 
   if (!user) {
     return c.jsonT({}, 401);
   }
 
-  const guard = UserResponseSchema.parse(user);
+  const updatedUser = await userRepository.update(userId, req);
+
+  const guard = UserResponseSchema.parse(updatedUser);
 
   return c.jsonT(guard);
 });
@@ -76,27 +70,17 @@ handler.openapi(routes.delete, async (c) => {
   if (userId === null) {
     return c.jsonT({}, 401);
   }
+  deleteUidCookie(c);
 
-  const user = await userRepository
-    .delete(userId)
-    .then((result) => {
-      deleteUidCookie(c);
-      return result;
-    })
-    .catch((e: unknown) => {
-      if (e instanceof Prisma.PrismaClientKnownRequestError) {
-        if (e.code === "P2025") {
-          return null;
-        }
-      }
-      throw e;
-    });
+  const user = await userRepository.findUnique(userId);
 
   if (!user) {
     return c.jsonT({}, 401);
   }
 
-  const guard = UserResponseSchema.parse(user);
+  const deletedUser = await userRepository.delete(userId);
+
+  const guard = UserResponseSchema.parse(deletedUser);
 
   return c.jsonT(guard);
 });
