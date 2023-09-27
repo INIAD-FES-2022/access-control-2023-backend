@@ -1,6 +1,8 @@
 import { OpenAPIHono } from "@hono/zod-openapi";
 import { getUid } from "helper/uid";
-import prisma from "lib/prisma";
+import { historyRepository } from "repositories/history.repository";
+import { programRepository } from "repositories/program.repository";
+import { userRepository } from "repositories/user.repository";
 import { HistoryResponseSchema } from "schema/history";
 import { routes } from "./routes";
 
@@ -9,11 +11,7 @@ const handler = new OpenAPIHono();
 handler.openapi(routes.post, async (c) => {
   const programId = c.req.valid("param").id;
 
-  const program = await prisma.program.findUnique({
-    where: {
-      id: programId,
-    },
-  });
+  const program = await programRepository.findUnique(programId);
 
   if (!program) {
     return c.jsonT({}, 404);
@@ -25,29 +23,15 @@ handler.openapi(routes.post, async (c) => {
     return c.jsonT({}, 401);
   }
 
-  const user = await prisma.user.findUnique({
-    where: {
-      id: userId,
-    },
-  });
+  const user = await userRepository.findUnique(userId);
 
   if (!user) {
     return c.jsonT({}, 401);
   }
 
-  const history = await prisma.history.create({
-    data: {
-      user: {
-        connect: {
-          id: user.id,
-        },
-      },
-      program: {
-        connect: {
-          id: program.id,
-        },
-      },
-    },
+  const history = await historyRepository.create({
+    userId: user.id,
+    programId: program.id,
   });
 
   const historyResponse = {
