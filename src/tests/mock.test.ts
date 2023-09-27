@@ -121,6 +121,33 @@ describe("Mock", () => {
       expect(userStore.get(user.id)).toBeUndefined();
     });
 
+    it("delete user with histories", async () => {
+      const data = {
+        age: 0,
+        gender: 0,
+        occupation: 0,
+        home: 0,
+        people: 0,
+        composition: 0,
+      };
+      const user = await userRepository.create(data);
+      expect(userStore.get(user.id)).toEqual(user);
+      const program = {
+        id: randomUUID(),
+        name: "test program",
+      };
+      programStore.set(program.id, program);
+      const history = await historyRepository.create({
+        userId: user.id,
+        programId: program.id,
+      });
+      expect(historyStore.get(history.id)).toEqual(history);
+      const deletedUser = await userRepository.delete(user.id);
+      expect(deletedUser).toEqual(user);
+      expect(userStore.get(user.id)).toBeUndefined();
+      expect(historyStore.get(history.id)).toBeUndefined();
+    });
+
     it("fail to delete user", async () => {
       const id = randomUUID();
       await expect(userRepository.delete(id)).rejects.toThrow("User not found");
