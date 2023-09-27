@@ -4,6 +4,7 @@
     "build": "esbuild --platform=node --outdir=dist --bundle --minify ./src/index.ts",
     "start": "tsx src/index.ts",
     "test": "dotenv -c test -- vitest",
+    "coverage": "dotenv -c test -- vitest run --coverage",
     "typecheck": "tsc --noEmit",
     "lint": "biome check src/",
     "format": "biome check --apply src/",
@@ -30,6 +31,7 @@
   "devDependencies": {
     "@biomejs/biome": "^1.2.2",
     "@types/node": "^20.6.3",
+    "@vitest/coverage-v8": "^0.34.5",
     "dotenv-cli": "^7.3.0",
     "esbuild": "^0.19.3",
     "husky": "^8.0.0",
