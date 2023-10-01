@@ -10,3 +10,7 @@ export const ProgramResponseSchema = z
     }),
   })
   .openapi("ProgramResponse");
+
+export const ProgramsResponseSchema = z
+  .array(ProgramResponseSchema)
+  .openapi("ProgramsResponse");

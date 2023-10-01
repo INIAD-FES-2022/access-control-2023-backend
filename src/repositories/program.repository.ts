@@ -14,6 +14,10 @@ export class ProgramRepository {
       },
     });
   }
+
+  async findAll(): Promise<Program[]> {
+    return await this.prisma.program.findMany();
+  }
 }
 
 const programRepository = new ProgramRepository(prisma);
