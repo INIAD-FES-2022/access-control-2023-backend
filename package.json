@@ -1,4 +1,5 @@
 {
+  "name": "access-control-2023-backend",
   "scripts": {
     "dev": "dotenv -c development -- tsx watch src/index.ts",
     "build": "esbuild --platform=node --outdir=dist --bundle --minify ./src/index.ts",
