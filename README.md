@@ -5,6 +5,15 @@
 ```bash
 docker compose up -d
 npm i
+npm run prisma:migrate
+npm run dev
+```
+
+### Example
+
+```bash
+cd example
+npm i
 npm run dev
 ```
 
