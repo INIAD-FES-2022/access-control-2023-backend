@@ -7,9 +7,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "biome check src/",
-    "format": "biome check --apply src/"
+    "format": "biome check --apply src/",
+    "aspida": "run-s aspida:*",
+    "aspida:clean": "rimraf ./src/api",
+    "aspida:build": "openapi2aspida --input http://localhost:8080/docs --output ./src/api"
   },
   "dependencies": {
+    "@aspida/fetch": "^1.14.0",
+    "aspida": "^1.14.0",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest"
@@ -20,7 +25,10 @@
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "autoprefixer": "latest",
+    "npm-run-all": "^4.1.5",
+    "openapi2aspida": "^0.23.2",
     "postcss": "latest",
+    "rimraf": "^5.0.5",
     "tailwindcss": "latest",
     "typescript": "latest"
   }
