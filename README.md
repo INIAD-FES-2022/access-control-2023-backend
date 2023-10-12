@@ -498,3 +498,32 @@ OpenAPI documentations
 - 500 Internal Server Error
 
   - サーバー内部エラー
+
+### `/api/program/{programId}`
+
+#### GET
+
+企画の情報を取得する
+
+##### レスポンス
+
+`Program`
+
+```javascript
+{
+  id: "企画ID",
+  name: "企画名",
+}
+```
+
+- 200 OK
+
+  - 企画情報を返す
+
+- 404 Not Found
+
+  - 企画が存在しない
+
+- 500 Internal Server Error
+
+  - サーバー内部エラー
