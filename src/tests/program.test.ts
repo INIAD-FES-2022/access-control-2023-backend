@@ -20,4 +20,28 @@ describe("Program", () => {
       expect(await res.json()).toEqual([createdProgram]);
     });
   });
+
+  describe("[GET] /program/:id", () => {
+    it("return 200", async () => {
+      const req = new Request(
+        `http://localhost/api/program/${createdProgram.id}`,
+        {
+          method: "GET",
+        },
+      );
+      const res = await route.fetch(req);
+      expect(res.status).toBe(200);
+      expect(await res.json()).toEqual(createdProgram);
+    });
+  });
+
+  describe("[GET] /program/:id", () => {
+    it("return 404", async () => {
+      const req = new Request(`http://localhost/api/program/${randomUUID()}`, {
+        method: "GET",
+      });
+      const res = await route.fetch(req);
+      expect(res.status).toBe(404);
+    });
+  });
 });
