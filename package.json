@@ -15,7 +15,8 @@
     "prisma:migrate": "dotenv -c development -- prisma migrate dev --name \"$(date +%s)\"",
     "prisma:generate": "prisma generate",
     "prisma:studio": "dotenv -c development -- prisma studio",
-    "prisma:seed": "dotenv -c development -- prisma db seed"
+    "prisma:seed": "dotenv -c development -- prisma db seed",
+    "generate:openapi": "tsx ./src/scripts/gen-openapi.ts"
   },
   "lint-staged": {
     "src/**/*.ts": [
