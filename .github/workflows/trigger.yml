@@ -1,0 +1,19 @@
+name: Trigger
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  trigger:
+    name: trigger
+    runs-on: ubuntu-latest
+    steps:
+      - uses: convictional/trigger-workflow-and-wait@v1.6.1
+        with:
+          owner: ${{ github.repository_owner }}
+          repo: "access-control-2023"
+          github_token: ${{ secrets.ACCESS_TOKEN }}
+          workflow_file_name: "aspida.yml"
