@@ -3,7 +3,7 @@ import { ProgramResponseSchema } from "schema/program";
 import { GetParamsSchema } from "./schema";
 
 const getRoute = createRoute({
-  path: "/",
+  path: "/{id}",
   method: "get",
   description: "企画を取得する",
   request: {

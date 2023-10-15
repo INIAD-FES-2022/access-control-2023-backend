@@ -3,7 +3,7 @@ import { HistoryResponseSchema } from "schema/history";
 import { PostParamsSchema } from "./schema";
 
 const postRoute = createRoute({
-  path: "/",
+  path: "/{id}",
   method: "post",
   description: "ユーザーを企画に参加させる",
   request: {

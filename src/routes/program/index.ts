@@ -12,6 +12,6 @@ handler.openapi(routes.get, async (c) => {
   return c.jsonT(guard);
 });
 
-handler.route("/:id", programIdHandler);
+handler.route("/", programIdHandler);
 
 export default handler;
