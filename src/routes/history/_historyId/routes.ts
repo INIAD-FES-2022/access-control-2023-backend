@@ -3,7 +3,7 @@ import { HistoryResponseSchema } from "schema/history";
 import { DeleteParamsSchema } from "./schema";
 
 const deleteRoute = createRoute({
-  path: "/",
+  path: "/{id}",
   method: "delete",
   description: "ユーザーの参加履歴を削除する",
   request: {

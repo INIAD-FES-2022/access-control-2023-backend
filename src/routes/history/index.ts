@@ -31,6 +31,6 @@ handler.openapi(routes.get, async (c) => {
   return c.jsonT(guard);
 });
 
-handler.route("/:id", historyIdHandler);
+handler.route("", historyIdHandler);
 
 export default handler;
