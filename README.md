@@ -171,19 +171,6 @@ interface History {
 
 両方が設定された場合は Bearer 認証を用いる
 
-### Note
-
-**下記の問題は nginx で解決可能**
-
-異なるポートではオリジンも異なるため、fetch では以下のように`mode`や`credentials`の設定が必要な場合がある。
-
-```javascript
-fetch("http://localhost:8080/api/user", {
-  mode: "cors",
-  credentials: "include",
-});
-```
-
 ## エンドポイント
 
 ### `/docs`
