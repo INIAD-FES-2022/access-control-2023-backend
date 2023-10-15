@@ -21,7 +21,6 @@ export const DefaultUidCookieOption: CookieOptions = {
   maxAge: 60 * 60 * 24 * 60,
   expires: new Date(new Date("2023-11-06T00:00:00+09:00").getTime()),
   sameSite: "Lax",
-  domain: env.DOMAIN,
 };
 
 export const getUid = (c: Context) => {

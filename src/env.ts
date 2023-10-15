@@ -4,6 +4,4 @@ import { z } from "zod";
 export const env = parseEnv(process.env, {
   PORT: z.number().default(8080),
   NODE_ENV: z.enum(["development", "production", "test"]).default("production"),
-  CORS_ORIGIN: z.string().default(""),
-  DOMAIN: z.string().default(""),
 });
