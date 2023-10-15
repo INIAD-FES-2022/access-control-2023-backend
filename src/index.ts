@@ -7,9 +7,7 @@ import handler from "routes";
 
 const app = new OpenAPIHono({ strict: false });
 
-if (env.NODE_ENV === "development") {
-  app.use("*", logger());
-}
+app.use("*", logger());
 
 app.use(
   "*",
