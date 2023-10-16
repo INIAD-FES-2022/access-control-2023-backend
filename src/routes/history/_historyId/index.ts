@@ -28,6 +28,10 @@ handler.openapi(routes.delete, async (c) => {
     return c.jsonT({}, 404);
   }
 
+  if (history.userId !== user.id) {
+    return c.jsonT({}, 404);
+  }
+
   const deletedHistory = await historyRepository.delete(history.id);
 
   const guard = HistoryResponseSchema.parse(
