@@ -1,5 +1,5 @@
 import { createRoute } from "@hono/zod-openapi";
-import { HistoryResponseSchema } from "schema/history";
+import { HistoriesResponseSchema } from "schema/history";
 
 const getRoute = createRoute({
   method: "get",
@@ -9,7 +9,7 @@ const getRoute = createRoute({
     200: {
       content: {
         "application/json": {
-          schema: HistoryResponseSchema,
+          schema: HistoriesResponseSchema,
         },
       },
       description: "ユーザーの参加履歴一覧",
